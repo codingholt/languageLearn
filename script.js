@@ -1,6 +1,8 @@
 //DOM
 let title  = document.getElementById('title');
 let opts =  document.querySelectorAll('.options');
+let btn = document.getElementById('btn');
+// btn.addEventListener('click', func)
 
 let question  = {
     word : 'gato',
@@ -15,6 +17,15 @@ function displayQuestion(q){
     opts.forEach(
         function(element, index){
             element.textContent = q.options[index]
+
+            element.addEventListener('click', function checkCorrect(){
+                if(q.answer == index){
+                    console.log('answer: correct')    
+                }
+                else{
+                    console.log('answer: false')
+                }
+            })
         }
     )
     

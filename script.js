@@ -18,7 +18,8 @@ function displayQuestion(q){
         function(element, index){
             element.textContent = q.options[index]
 
-            element.addEventListener('click', function checkCorrect(){
+            element.addEventListener('click', 
+            function checkCorrect(){
                 if(q.answer == index){
                     console.log('answer: correct')    
                 }

@@ -66,9 +66,11 @@ let app = {
         if(currQuestion.answer ===  userSelected){
             console.log('answer: correct')
             this.score++
+            this.showResult(true)
         }
         else{
             console.log('answer: incorrect')
+            this.showResult(false)
         }
 
         //refresh score stats
@@ -93,6 +95,19 @@ let app = {
     updateStats: function(){
         let scoreDiv = document.getElementById('score');
         scoreDiv.textContent = 'Your score: ' + this.score
+    },
+
+    showResult: function(isCorrect){
+        let resultDiv = document.getElementById('result');
+
+
+        if(isCorrect){
+            result = 'Correct Answer!'
+        }
+        else{
+            result = 'Unfortunatly your answer is wrong.'
+        }
+        resultDiv.textContent = result
     }
 };
 

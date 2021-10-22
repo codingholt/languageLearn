@@ -28,6 +28,9 @@ let question = [
 
 let app = {
     start : function(){
+        
+        this.currPosition =0;
+        this.score = 0;
         let opts = document.querySelectorAll('.options');
     
         opts.forEach((element, index) => {
@@ -39,11 +42,11 @@ let app = {
         });
           
         // show first question
-        this.displayQuestion(question);
+        this.updateStats();
+        this.displayQuestion(question[this.currPosition]);
     },
 
     displayQuestion : function(q){
-
         //what question are we currently showing
         this.currQuestion = q;
 
@@ -59,12 +62,37 @@ let app = {
     },
 
     checkAnswer : function(userSelected){
-        if(this.currQuestion.answer ===  userSelected){
+        let currQuestion = question[this.currPosition]
+        if(currQuestion.answer ===  userSelected){
             console.log('answer: correct')
+            this.score++
         }
         else{
             console.log('answer: incorrect')
         }
+
+        //refresh score stats
+        this.updateStats();
+
+        //next question
+        this.increasePosition();
+
+        this.displayQuestion(question[this.currPosition]);
+
+
+    },
+
+
+    increasePosition: function() {
+        this.currPosition++;
+        if(this.currPosition === question.length){
+            this.currPosition = 0;
+        }
+    },
+
+    updateStats: function(){
+        let scoreDiv = document.getElementById('score');
+        scoreDiv.textContent = 'Your score: ' + this.score
     }
 };
 

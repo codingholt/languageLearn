@@ -1,7 +1,6 @@
 //DOM
 let title  = document.getElementById('title');
 let btn = document.getElementById('btn');
-// btn.addEventListener('click', func)
 
 let question = [
   {
@@ -25,6 +24,7 @@ let question = [
     answer: 0
   }
 ];
+
 
 let app = {
     start : function(){
@@ -69,10 +69,10 @@ let app = {
             this.showResult(true)
         }
         else{
-            console.log('answer: incorrect')
+            console.log('answer: incorrect');
             this.showResult(false)
         }
-
+        
         //refresh score stats
         this.updateStats();
 
@@ -98,18 +98,51 @@ let app = {
     },
 
     showResult: function(isCorrect){
-        let resultDiv = document.getElementById('result');
-
-
-        if(isCorrect){
+      let resultDiv = document.getElementById('result')
+  
+      let answer = this.currQuestion.options[this.currQuestion.answer]
+        if(isCorrect === true){
             result = 'Correct Answer!'
         }
         else{
-            result = 'Unfortunatly your answer is wrong.'
+            result = 'Unfortunatly your answer is wrong. ' + 'The correct answer is: ' + answer;
+            
         }
-        resultDiv.textContent = result
+        resultDiv.textContent = result;
     }
 };
 
+let settings = {
+  modal : function(){
+        // Get the modal
+      var modal = document.getElementById("myModal");
+      // Get the button that opens the modal
+      var mbtn = document.getElementById("myBtn");
+      // Get the <span> element that closes the modal
+      var span = document.getElementsByClassName("close")[0];
+      // When the user clicks on the button, open the modal
+      mbtn.onclick = function() {
+        modal.style.display = "block";
+      }
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function() {
+        modal.style.display = "none";
+      }
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      } 
+     },
+  storeData : function(){
 
+  }
+
+
+
+}
+// const settingsDiv = document.getElementById('settings')
+// settingsDiv.addEventListener('click', settings.open())
 app.start()
+settings.modal()

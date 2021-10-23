@@ -24,14 +24,24 @@
 
 </div>
  <!-- Trigger/Open The Modal -->
- <button id="myBtn">settings</button>
+ <div id=buttonWrapper>
+ <button id="addQuestionBtn">Add question</button>
+</div>
 
  <!-- The Modal -->
  <div id="myModal" class="modal">
          <!-- Modal content -->
             <div class="modal-content">
               <span class="close">&times;</span>
-            <p>test</p>
+        
+      <h1>Add a question</h1>
+        <p>Question</p>
+            <input id='question'>
+        <p>Answer options:</p>
+            <input id='options'>
+         <p>Correct answer:</p>
+            <input id='answer'>
+        <div id=submitAddQuestion><button type="submit">submit</button></div>
 </div>
     <script src="script.js"></script>
 </div> 
